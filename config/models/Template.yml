@@ -1,0 +1,37 @@
+
+attributes: 
+  code: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      allow_blank: false
+      and: 
+        eq_deleted: false 
+        
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      allow_blank: false
+      and: 
+        eq_deleted: false
+        
+  online: 
+    type: Boolean
+    default: false
+        
+  classify: 
+    type: String
+    default: ~
+    validates_presence_of: ~ 
+              
+  core_version:  
+    type: String
+    default: ~
+    validates_presence_of: ~
+    
+  comment:  
+    type: String
+    default: ~

@@ -1,0 +1,25 @@
+ 
+has_one: ~
+has_many: ~
+belongs_to: ~
+delete: ~
+destroy: ~
+attributes: 
+  class_diagram_id: 
+    type: String
+    default: ~
+  use_case_id: 
+    type: String
+    default: ~
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      minimum: 0
+      maximum: 500
+  x: 
+    type: Integer
+    default: ~
+  y: 
+    type: Integer
+    default: ~

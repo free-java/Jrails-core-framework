@@ -1,0 +1,52 @@
+ 
+belongs_to: 
+  hasModel: 
+    classify: Model
+    foreign_key: has_model_id
+    and:
+      eq_deleted: false
+  hasField: 
+    classify: Field
+    foreign_key: has_field_id
+    and:
+      eq_deleted: false
+  Model: 
+    classify: Model
+    foreign_key: model_id
+    and:
+      eq_deleted: false
+
+      
+attributes: 
+  model_id: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_free_of: 
+      classify: app.validator.has.ModelIdValidate
+      
+  has_model_id: 
+    type: String
+    default: ~
+  has_field_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      and: 
+        eq_deleted : false
+  relation: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_format_of: 
+      with: '^((One)|(Many))$'
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      maximum: 100
+      
+  sorting: 
+    type: Integer
+    default: ~

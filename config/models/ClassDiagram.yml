@@ -1,0 +1,74 @@
+has_many: 
+  models: 
+    classify: Model 
+    foreign_key: class_diagram_id
+    and:
+      eq_deleted: false
+
+  notes: 
+    classify: Note 
+    foreign_key: class_diagram_id
+    and:
+      eq_deleted: false
+            
+  knownModels: 
+    classify: Model 
+    foreign_key: class_diagram_id
+    and:
+      eq_deleted: false
+      ne_code: Unknown    
+        
+attributes: 
+  code: 
+    type: String
+    default: ~
+#    validates_presence_of: ~
+    validates_uniqueness_of:
+      allow_blank: true
+      and: 
+        eq_deleted: false
+    validates_format_of: 
+      with: '^([a-zA-Z]{1}[a-zA-Z\w ]{1,29})$'
+    
+  name: 
+    type: String
+    default: ~
+#    validates_presence_of: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      and: 
+        eq_deleted: false
+    validates_format_of: 
+      with: '^([\u4e00-\u9fa5\w]{1,30})$'
+      
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      allow_blank: true
+      minimum: 0
+      maximum: 200
+      
+#delete: 
+#  - Model: 
+#      foreign_key: class_diagram_id
+#      method: delete
+#      and: 
+#        eq_deleted: false
+#  - Note: 
+#      foreign_key: class_diagram_id
+#      method: delete
+#      and: 
+#        eq_deleted: false
+#        
+#destroy: 
+#  - Model: 
+#      foreign_key: class_diagram_id
+#      method: destroy
+#      and: 
+#        eq_deleted: false
+#  - Note: 
+#      foreign_key: class_diagram_id
+#      method: destroy
+#      and: 
+#        eq_deleted: false

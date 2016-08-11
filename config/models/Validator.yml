@@ -1,0 +1,11 @@
+ 
+attributes: 
+  field_id: 
+    type: String
+    default: ~
+  of: 
+    type: String
+    default: ~
+  configs: 
+    type: String
+    default: ~

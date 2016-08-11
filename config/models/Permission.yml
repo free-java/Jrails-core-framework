@@ -1,0 +1,87 @@
+ 
+has_one: ~
+has_many: ~
+belongs_to: 
+  ownerUser: 
+    classify: User
+    foreign_key: assign_owner_id
+    and: 
+      eq_assign_owner_user: true
+
+delete: ~
+destroy: ~
+attributes: 
+  model_id: 
+    type: String
+    default: ~
+  model_name: 
+    type: String
+    default: ~
+  action: 
+    type: String
+    default: ~
+  hide: 
+    type: Boolean
+    default: false
+    
+  assign_owner_user: 
+    type: Boolean
+    default: false
+      
+  assign_owner_user_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      scope: [model_id,model_name,action]
+      and:
+        eq_deleted: false
+        eq_assign_owner_user: true
+        
+  assign_owner_user_group: 
+    type: Boolean
+    default: false
+  assign_other_user_group: 
+    type: Boolean
+    default: false
+    
+  assign_account: 
+    type: Boolean
+    default: false        
+  assign_user_group: 
+    type: Boolean
+    default: false
+  assign_user: 
+    type: Boolean
+    default: false
+    
+  assign_account_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      scope: [model_id,model_name,action]
+      and:
+        eq_deleted: false
+        eq_assign_account: true
+        
+  assign_user_group_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      scope: [model_id,model_name,action]
+      and:
+        eq_deleted: false
+        eq_assign_user_group: true
+        
+  assign_user_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      scope: [model_id,model_name,action]
+      and:
+        eq_deleted: false
+        eq_assign_user: true
+    

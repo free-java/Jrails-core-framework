@@ -1,0 +1,99 @@
+ 
+has_one: ~
+      
+has_many: 
+  children: 
+    classify: UseCaseHas
+    foreign_key: use_case_id
+    and: 
+      eq_deleted: false
+      
+  parent: 
+    classify: UseCaseHas
+    foreign_key: has_use_case_id
+    and: 
+      eq_deleted: false
+
+  include: 
+    classify: UseCaseHas
+    foreign_key: use_case_id
+    and: 
+      eq_deleted: false
+      eq_relation: Include
+      
+  association: 
+    classify: ActorUseCaseHas
+    foreign_key: use_case_id
+    and: 
+      eq_deleted: false
+    
+    
+belongs_to: ~
+          
+delete: 
+  - UseCaseHas: 
+      foreign_key: use_case_id
+      method: delete
+      and: 
+        eq_deleted: false
+        
+  - UseCaseHas: 
+      foreign_key: has_use_case_id
+      method: delete
+      and: 
+        eq_deleted: false
+        
+  - ActorUseCaseHas: 
+      foreign_key: use_case_id
+      method: delete
+      and: 
+        eq_deleted: false
+        
+destroy: 
+  - UseCaseHas: 
+      foreign_key: use_case_id
+      method: destroy
+        
+  - UseCaseHas: 
+      foreign_key: has_use_case_id
+      method: destroy
+      
+  - ActorUseCaseHas: 
+      foreign_key: use_case_id
+      method: destroy     
+        
+attributes: 
+  name: 
+    type: String
+    default: ~
+    validates_uniqueness_of:
+      scope: [use_case_diagram_id]
+      and:
+        eq_deleted: false
+        ne_name: Unknown
+    validates_format_of: 
+      with: '^([\u4e00-\u9fa5\w]{1,30})$'
+      
+  code: 
+    type: String
+    default: ~
+    validates_uniqueness_of:
+      scope: [use_case_diagram_id]
+      and:
+        eq_deleted: false
+        ne_code: Unknown
+    validates_format_of: 
+      with: '^([a-zA-Z]{1}[\w ]{0,29})$'
+       
+  comment: 
+    type: String
+    default: ~
+  x: 
+    type: Integer
+    default: ~
+  y: 
+    type: Integer
+    default: ~
+  use_case_id: 
+    type: String
+    default: ~

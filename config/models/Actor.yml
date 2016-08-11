@@ -1,0 +1,104 @@
+ 
+has_one: ~
+       
+has_many: 
+  children: 
+    classify: ActorHas
+    foreign_key: actor_id
+    and: 
+      eq_deleted: false
+  parent: 
+    classify: ActorHas
+    foreign_key: has_actor_id
+    and: 
+      eq_deleted: false
+      
+  generalization: 
+    classify: ActorHas
+    foreign_key: actor_id
+    and: 
+      eq_deleted: false
+      eq_relation: Generalization
+      
+  association: 
+    classify: ActorUseCaseHas
+    foreign_key: actor_id
+    and: 
+      eq_deleted: false
+      
+belongs_to: 
+  UseCase: 
+    foreign_key: use_case_id
+
+delete: 
+  - ActorHas: 
+      foreign_key: actor_id
+      method: delete
+      and: 
+        eq_deleted: false        
+  - ActorHas: 
+      foreign_key: has_actor_id
+      method: delete
+      and: 
+        eq_deleted: false
+        
+  - ActorUseCaseHas: 
+      foreign_key: actor_id
+      method: delete
+      and: 
+        eq_deleted: false
+        
+destroy: 
+  - ActorHas: 
+      foreign_key: actor_id
+      method: destroy
+        
+  - ActorHas: 
+      foreign_key: has_actor_id
+      method: destroy
+      
+  - ActorUseCaseHas: 
+      foreign_key: actor_id
+      method: destroy
+        
+attributes: 
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+      scope: [use_case_diagram_id]
+      and:
+        eq_deleted: false
+        ne_name: Unknown
+    validates_format_of: 
+      allow_blank: true
+      with: '^([\u4e00-\u9fa5\w]{1,30})$'
+      
+  code: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      allow_blank: true
+      scope: [use_case_diagram_id]
+      and:
+        eq_deleted: false
+        ne_code: Unknown
+    validates_format_of: 
+      allow_blank: true
+      with: '^([a-zA-Z]{1}[\w ]{0,29})$' 
+  comment: 
+    type: String
+    default: ~
+  x: 
+    type: Integer
+    default: 0
+  y: 
+    type: Integer
+    default: 0
+  use_case_diagram_id: 
+    type: String
+    default: ~
+    validates_presence_of: ~

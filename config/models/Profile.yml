@@ -1,0 +1,25 @@
+ 
+has_one: ~
+has_many: ~
+belongs_to: ~
+delete: ~
+destroy: ~
+attributes: 
+  name: 
+    type: String
+    default: ~
+  controller: 
+    type: String
+    default: ~
+  action: 
+    type: String
+    default: ~
+  access: 
+    type: Boolean
+    default: ~
+  role_id: 
+    type: String
+    default: ~
+  comment: 
+    type: String
+    default: ~

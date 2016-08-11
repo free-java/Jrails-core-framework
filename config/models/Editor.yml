@@ -1,0 +1,11 @@
+
+attributes: 
+  theme: 
+    type: String
+    default: 'ace/theme/eclipse'
+    validates_presence_of: ~
+  font_size: 
+    type: Integer
+    default: 12
+    validates_presence_of: ~
+    

@@ -1,0 +1,27 @@
+
+attributes: 
+  domain: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+  context: 
+    type: String
+    default: ~
+    validates_presence_of: ~      
+  port: 
+    type: Integer
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      scope: [domain]
+      allow_blank: false
+
+  solution_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true
+                
+  status: 
+    type: Integer
+    default: 0

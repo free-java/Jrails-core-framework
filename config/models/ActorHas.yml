@@ -1,0 +1,41 @@
+ 
+has_one: ~
+has_many: ~
+    
+belongs_to: 
+  Actor: 
+    foreign_key: actor_id
+    and: 
+      eq_deleted: false
+      
+  hasActor:
+    classify: Actor
+    foreign_key: has_actor_id
+    and: 
+      eq_deleted: false
+  
+delete: ~
+destroy: ~
+attributes: 
+  actor_id: 
+    type: String
+    default: ~
+    validates_free_of: 
+      classify: app.validator.actor_has.ActorIdValidate
+      
+  has_actor_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of:
+      allow_blank: true
+      scope: [actor_id,relation]
+      and: 
+        eq_deleted: false
+        nil_actor_id: false
+        
+  comment: 
+    type: String
+    default: ~
+  relation: 
+    type: String
+    default: ~

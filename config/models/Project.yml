@@ -1,0 +1,126 @@
+
+belongs_to: 
+  includeStandardProject: 
+    classify: Project
+    foreign_key: include_standard_project_id
+    and: 
+      eq_deleted: false
+
+has_one: 
+  UseCaseDiagram: 
+    foreign_key: project_id
+    cache: 60
+    and: 
+      eq_deleted: false
+  ClassDiagram: 
+    foreign_key: project_id
+    cache: 60
+    and: 
+      eq_deleted: false
+      
+  _owenr: 
+    classify: Permission
+    foreign_key: model_id
+    and: 
+      eq_model_name: Project
+      eq_deleted: false
+  
+  Tomcat: 
+    classify: Tomcat
+    foreign_key: project_id
+    and: 
+      eq_deleted: false
+        
+has_many: 
+  displayPermission: 
+    classify: Permission
+    foreign_key: owner_id
+    and: 
+      eq_deleted: false
+      eq_owner_name: Project
+      eq_hide: false
+      
+  hidePermission: 
+    classify: Permission
+    foreign_key: owner_id
+    and: 
+      eq_deleted: false
+      eq_owner_name: Project
+      eq_hide: true      
+ 
+  Permission: 
+    classify: Permission
+    foreign_key: owner_id
+    and: 
+      eq_deleted: false
+      eq_owner_name: Project
+       
+  notes: 
+    classify: Note 
+    foreign_key: project_id
+    and: 
+      eq_deleted: false
+
+delete: 
+  - ClassDiagram: 
+      foreign_key: project_id
+      method: delete
+      and: 
+        eq_deleted: false
+  - UseCaseDiagram: 
+      foreign_key: project_id
+      method: delete
+      and: 
+        eq_deleted: false  
+           
+destroy: 
+  - ClassDiagram: 
+      foreign_key: project_id
+      method: destroy        
+  - UseCaseDiagram: 
+      foreign_key: project_id
+      method: destroy     
+            
+attributes: 
+  code: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      and: 
+        eq_deleted: false
+    validates_format_of: 
+      with: '^([a-zA-Z]{1}[a-zA-Z\w ]{1,29})$'
+    
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      and: 
+        eq_deleted: false
+    validates_format_of: 
+      with: '^([\u4e00-\u9fa5\w]{1,30})$'
+      
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      minimum: 0
+      maximum: 200
+  name_standard: 
+    type: String
+    default: English
+        
+  omit_standard: 
+    type: Boolean
+    default: false
+    
+  include_standard_project_id: 
+    type: String
+    default: ~
+#    validates_presence_of: ~
+    
+  standard: 
+    type: Boolean
+    default: false

@@ -1,0 +1,57 @@
+env: Production
+#table_name: pims_account
+#primary_key: a_id
+
+has_one: ~
+has_many: 
+  UserGroup: 
+  foreign_key: account_id
+  and: 
+    eq_deleted: false
+    
+belongs_to: ~
+delete: ~
+destroy: ~
+attributes: 
+  name: 
+    type: String
+    default: ~
+#    validates_presence_of: ~
+#    validates_uniqueness_of: 
+#      and:
+#        eq_deleted: false 
+#    validates_length_of: 
+#      within: [1,100]
+#  code: 
+#    type: String
+#    default: ~
+#    validates_uniqueness_of: 
+#      and:
+#        eq_deleted: false        
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      allow_blank: true
+      within: [1,200]
+      
+  phone: 
+    type: String
+    default: ~
+  fax: 
+    type: String
+    default: ~
+  email: 
+    type: String
+    default: ~
+  address: 
+    type: String
+    default: ~
+  contact: 
+    type: String
+    default: ~
+
+        
+  classify: 
+    type: String
+    default: ~

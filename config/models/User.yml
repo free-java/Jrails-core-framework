@@ -1,0 +1,45 @@
+ 
+has_one: ~
+has_many: ~
+belongs_to: 
+  Role: 
+    cache: 2
+
+delete: ~
+destroy: ~
+attributes: 
+  username: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      and:
+        eq_deleted: false 
+    validates_length_of: 
+      within: [4,20]
+      
+  role_id: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+  password: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_length_of: 
+      within: [1,30]
+  phone: 
+    type: String
+    default: ~
+  email: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    
+  qq: 
+    type: String
+    default: ~

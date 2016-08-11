@@ -1,0 +1,87 @@
+--- 
+Robot: 
+  family: Mysql
+  username: "robot_user"
+  driver: 'org.gjt.mm.mysql.Driver'
+  password: "123456"
+  url: "jdbc:mysql://localhost:3306/core?characterEncoding=utf8"
+  datasource: org.apache.commons.dbcp.BasicDataSource
+  quote: "`keyword`"
+  schema: "core"
+  prefix: table_perfix
+  formats:
+    datetime: 'yyyy-MM-dd HH:mm:ss.SSS'
+    date: 'yyyy-MM-dd'
+    time: 'HH:mm:ss.SSS'
+    
+Development: 
+  family: Mysql
+  username: "root"
+  driver: 'org.gjt.mm.mysql.Driver'
+  password: "123456"
+  url: "jdbc:mysql://localhost:3306/core?characterEncoding=utf8"
+  datasource: org.apache.commons.dbcp.BasicDataSource
+  quote: "`keyword`"
+  schema: "`core`"
+  prefix: table_perfix
+  formats:
+    datetime: 'yyyy-MM-dd HH:mm:ss.SSS'
+    date: 'yyyy-MM-dd'
+    time: 'HH:mm:ss.SSS'
+    
+#Production_writer: 
+#  family: Mysql
+#  username: "root"
+#  driver: 'org.gjt.mm.mysql.Driver'
+#  password: "password"
+#  url: "jdbc:mysql://localhost:3306/core?characterEncoding=utf8"
+#  datasource: org.apache.commons.dbcp.BasicDataSource
+#  quote: "`keyword`"
+#  schema: "core"
+#  prefix: 'table_perfix'
+#  pluralized: true
+#  formats:
+#    datetime: 'yyyy-MM-dd HH:mm:ss.SSS'
+#    date: 'yyyy-MM-dd'
+#    time: 'HH:mm:ss.SSS'
+    
+Production: 
+  family: Mysql
+  username: "root"
+  driver: 'org.gjt.mm.mysql.Driver'
+  password: "password"
+  url: "jdbc:mysql://localhost:3306/core?characterEncoding=utf8"
+  datasource: org.apache.commons.dbcp.BasicDataSource
+  quote: "`keyword`"
+  schema: "core"
+#  prefix: 'table_'
+  pluralized: false
+  formats:
+    datetime: 'yyyy-MM-dd HH:mm:ss.SSS'
+    date: 'yyyy-MM-dd'
+    time: 'HH:mm:ss.SSS'
+
+
+#Sqlite: 
+#  username: "root"
+#  driver: 'org.sqlite.JDBC'
+#  password: "123456"
+#  url: "jdbc:sqlite:D:/svn/projects/jr-core-2014/WEB-INF/db/core.db"
+#  datasource: org.apache.commons.dbcp.BasicDataSource
+#  quote: "[keyword]"
+#  formats:
+#    datetime: 'yyyy-MM-dd HH:mm:ss.SSS'
+#    date: 'yyyy-MM-dd'
+#    time: 'HH:mm:ss.SSS' 
+
+#MySqlRemote: 
+#  username: "jack"
+#  driver: 'org.gjt.mm.mysql.Driver'
+#  password: "Ye8255902"
+#  url: "jdbc:mysql://svn.1225.hk:3306/core?characterEncoding=utf8"
+#  datasource: org.apache.commons.dbcp.BasicDataSource
+#  quote: "`keyword`"
+#  formats:
+#    datetime: 'yyyy-MM-dd HH:mm:ss.SSS'
+#    date: 'yyyy-MM-dd'
+#    time: 'HH:mm:ss.SSS'

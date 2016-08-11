@@ -1,0 +1,30 @@
+ 
+has_one: ~
+has_many: 
+  Profile: 
+    foreign_key: role_id
+    and: 
+      eq_deleted: false
+      
+belongs_to: 
+  UserGroup: 
+    cache: 2
+    
+delete: ~
+destroy: ~
+attributes: 
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      scope: [user_group_id]
+      and: 
+        eq_deleted: false
+        ne_name: Unknown
+#    validates_free_of: 
+#      classify: app.validator.role.NameValidate
+        
+  user_group_id: 
+    type: String
+    default: ~

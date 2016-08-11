@@ -1,0 +1,41 @@
+ 
+has_one: ~
+has_many: ~
+
+belongs_to: 
+  UseCase: 
+    foreign_key: use_case_id
+    and: 
+      eq_deleted: false
+      
+  hasUseCase: 
+    classify: UseCase
+    foreign_key: has_use_case_id
+    and: 
+      eq_deleted: false
+      
+delete: ~
+destroy: ~
+attributes: 
+  use_case_id: 
+    type: String
+    default: ~
+    validates_free_of: 
+      classify: app.validator.use_case_has.UseCaseIdValidate
+      
+  has_use_case_id: 
+    type: String
+    default: ~
+    validates_uniqueness_of: 
+      allow_blank: true 
+      scope: [use_case_id,relation]
+      and:
+        eq_deleted: false
+        nil_use_case_id: false
+        
+  relation: 
+    type: String
+    default: ~
+  comment: 
+    type: String
+    default: ~

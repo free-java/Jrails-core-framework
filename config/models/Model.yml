@@ -1,0 +1,111 @@
+
+belongs_to: 
+  ClassDiagram: 
+    foreign_key: class_diagram_id
+    and:
+      eq_deleted: fasle
+      
+has_many: 
+  fields: 
+    classify: Field
+    foreign_key: model_id
+    and:
+      eq_deleted: false
+      asc_sorting: true
+
+  knownFields: 
+    classify: Field
+    foreign_key: model_id
+    and:
+      eq_deleted: false
+      ne_code: Unknown
+      asc_sorting: true
+      
+  limitFields: 
+    classify: Field
+    foreign_key: model_id
+    limit: 6
+    offset: 0
+    and:
+      eq_deleted: false
+      asc_sorting: true
+
+  Has:
+    foreign_key: model_id
+    and: 
+      eq_deleted: false
+
+delete: 
+  - Has: 
+      foreign_key: has_model_id
+      method: delete
+      and: 
+        eq_deleted: false
+  - Has: 
+      foreign_key: model_id
+      method: delete
+      and: 
+        eq_deleted: false 
+  - Field: 
+      foreign_key: model_id
+      method: delete
+      and: 
+        eq_deleted: false
+        
+destroy: 
+  - Has: 
+      foreign_key: has_model_id
+      method: destroy        
+  - Has: 
+      foreign_key: model_id
+      method: destroy
+  - Field: 
+      foreign_key: model_id
+      method: destroy
+
+       
+attributes: 
+  class_diagram_id: 
+    type: String
+    default: ~
+    
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      scope: [class_diagram_id]
+      and:
+        eq_deleted: false
+        ne_name: Unknown
+    validates_format_of: 
+      with: '^([\u4e00-\u9fa5\w]{1,100})$'
+      
+  code: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      scope: [class_diagram_id]
+      and:
+        eq_deleted: false
+        ne_code: Unknown 
+    validates_format_of: 
+      with: '^([a-zA-Z]{1}[\w ]{0,99})$' 
+      
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      minimum: 0
+      maximum: 200
+      
+  x: 
+    type: Integer
+    default: 0
+    
+  y: 
+    type: Integer
+    default: 0 
+    
+    

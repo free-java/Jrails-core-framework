@@ -1,0 +1,98 @@
+belongs_to: 
+  Model: 
+    classify: Model
+
+has_many: 
+  Validator: 
+    and: 
+      eq_deleted: false
+      asc_created_at: true
+
+has_one:       
+  Has: 
+    foreign_key: has_field_id
+    and: 
+      eq_deleted: false
+      
+delete: 
+  - Validator: 
+      foreign_key: field_id
+      method: delete
+      and: 
+        eq_deleted: false
+  - Has: 
+      foreign_key: has_field_id
+      method: delete
+      and: 
+        eq_deleted: false
+                
+destroy: 
+  - Validator: 
+      foreign_key: field_id
+      method: destroy
+  - Has: 
+      foreign_key: has_field_id
+      method: destroy
+                 
+attributes: 
+  model_id: 
+    type: String
+    default: ~
+  code: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of:
+      scope: [model_id]
+      and:
+        eq_deleted: false
+        ne_code: Unknown
+    validates_format_of: 
+      with: '^([a-zA-Z]{1}[\w]{0,99})$' 
+    
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      scope: [model_id]
+      and:
+        eq_deleted: false
+        ne_name: Unknown
+    validates_format_of: 
+      with: '^([\u4e00-\u9fa5\w]{1,100})$'
+      
+  comment: 
+    type: String
+    default: ~
+    validates_length_of: 
+      minimum: 0
+      maximum: 100
+      
+  type: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_format_of: 
+      with: '(String\(\d+\))|(Char\(\d+\))|(String)|(Integer)|(Long)|(Float)|(Double)|(Timestamp)|(Date)|(Time)|(Boolean)|(Object)'
+    
+  default_value: 
+    type: String
+    default: ~
+    validates_length_of: 
+        minimum: 0
+        maximum: 500
+      
+  sorting: 
+    type: Integer
+    default: ~
+    
+  display: 
+    type: Boolean
+    default: false
+    validates_free_of: 
+      classify: app.validator.field.DisplayValidate
+    
+  belongs_to_model_id: 
+    type: String
+    default: ~

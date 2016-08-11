@@ -1,0 +1,34 @@
+
+attributes: 
+  project_id: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+
+  template_id: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+           
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      scope: [project_id]
+      and:
+        eq_deleted: false 
+        
+  status: 
+    type: Integer
+    default: 0
+
+  forced: 
+    type: Boolean
+    default: false
+    
+  db_family: 
+    type: String
+    default: MySql   
+    
+    

@@ -1,0 +1,53 @@
+formats:
+  datetime: 'yyyy-MM-dd HH:mm:ss'
+  date: 'yyyy-MM-dd'
+  time: 'HH:mm:ss'
+     
+     
+test: '2222'     
+                 
+errors:
+  ALL: 
+    ALL:
+      type:
+        message: "{0}{1}数据类型错误"
+      uniqueness:
+        message: "{0}{1}已经存在"
+      number: 
+        greater_than: "{0}{1}必须大于{3}"
+        greater_than_or_equal_to: "{0}{1}必须大于或等于{3}"
+        equal_to: "{0}{1}必须等于{3}"
+        less_than: "{0}{1}必须小于{3}"
+        less_than_or_equal_to: "{0}{1}必须小于或等于{3}"
+        odd: "{0}{1}必须是奇数"
+        even: "{0}{1}必须是偶数"
+      presence: 
+        message: "{0}{1}不能为空"
+      length:
+        is: "{0}{1}没符合(应该是{3}个字符)"
+        minimum: "{0}{1}太短(最短为{3}个字符)"
+        maximum: "{0}{1}太长(最长为{3}个字符)"
+        within: "{0}{1}必须在这范围{3}"
+      inclusion:
+        in: "{0}{1}不包括在列表中"
+      format:
+        with:  "{0}{1}没符合规则"
+      exclusion: 
+        in: "{0}{1}被保留"
+      date: 
+        is: "{0}{1}必须是{3}"
+        minimum: "{0}{1}太小(最小为{3})"
+        maximum: "{0}{1}太大(最大为{3})"
+        within: "{0}{1}必须在这范围{3}"
+      timestamp:
+        is: "{0}{1}必须是{3}"
+        minimum: "{0}{1}太小(最小为{3})"
+        maximum: "{0}{1}太大(最大为{3})"
+        within: "{0}{1}必须在这范围{3}"
+      time: 
+        is: "{0}{1}必须是{3}"
+        minimum: "{0}{1}太小(最小为{3})"
+        maximum: "{0}{1}太大(最大为{3})"
+        within: "{0}{1}必须在这范围{3}"
+          
+                  

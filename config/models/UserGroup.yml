@@ -1,0 +1,29 @@
+ 
+has_one: ~
+has_many: 
+  User: 
+  foreign_key: user_group_id
+  and: 
+    eq_deleted: false
+    
+belongs_to: 
+  Account: 
+    cache: 2
+    
+delete: ~
+destroy: ~
+attributes: 
+  name: 
+    type: String
+    default: ~
+    validates_presence_of: ~
+    validates_uniqueness_of: 
+      scope: [account_id]
+      and:
+        eq_deleted: false 
+    validates_length_of: 
+      within: [1,100]
+  account_id: 
+    type: String
+    default: ~
+    validates_presence_of: ~
